@@ -1,0 +1,2 @@
+# opensshiftprojecta
+openshift project A
