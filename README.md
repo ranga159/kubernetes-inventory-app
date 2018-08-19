@@ -1,2 +1,2 @@
-# opensshiftprojecta
-openshift project A
+# inventory micro service app
+inventory app
