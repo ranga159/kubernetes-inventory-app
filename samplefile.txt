@@ -1,1 +1,2 @@
-sample file editin
+sample file editing
+master file edited
