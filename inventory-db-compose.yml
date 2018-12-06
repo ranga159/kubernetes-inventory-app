@@ -1,0 +1,10 @@
+version: '3.1'
+services:
+  inventory-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=inventory
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=inventory
+    ports:
+      - "5430:5432"

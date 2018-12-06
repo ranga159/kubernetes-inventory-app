@@ -1,0 +1,1 @@
+CREATE SCHEMA inventory_schema AUTHORIZATION inventory;
