@@ -1,2 +1,2 @@
-# inventory micro service app
+# inventory micro service application
 inventory app
