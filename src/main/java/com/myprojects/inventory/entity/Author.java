@@ -1,39 +1,33 @@
 package com.myprojects.inventory.entity;
 
-import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "Book")
-@Table(name = "book")
+@Entity(name = "Author")
+@Table(name = "author")
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public class Book extends BaseEntity{
-	
+public class Author extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String title;
-	private LocalDate published_date;
-	private int isbn;
-	@ManyToOne
-	@JoinColumn(name="author_id", nullable= false)
-	private Author author;
-	
-	
-
+	private String firstName;
+	private String lastName;
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private  Set<Book> books;
 }

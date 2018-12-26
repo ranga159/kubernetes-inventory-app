@@ -1,0 +1,5 @@
+user p4merge for merge and diff: https://www.perforce.com/downloads/visual-merge-tool
+
+git difftool master 
+git difftool mergetest2 remotes/origin/mergetest2
+git merge

@@ -18,16 +18,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class InventoryServiceImpl implements InventoryService{
 
-	private BookRepository inventoryRepository;
+	private BookRepository bookRepository;
 	
 	@Override
 	public List<BookDTO> getAllBooks() {	
-		List<Book> books = inventoryRepository.findAll();
+		List<Book> books = bookRepository.findAll();
 		return BookConverter.convertBookListToBookDTOList(books);
 	}
 	
 	public BookDTO getBook(Long bookId) {
-		Optional<Book> book = inventoryRepository.findById(bookId);
+		Optional<Book> book = bookRepository.findById(bookId);
 		if(book.isPresent()) {
 			return BookConverter.convertBooktoBookDTO(book.get());
 		}else {
@@ -38,7 +38,7 @@ public class InventoryServiceImpl implements InventoryService{
 	
 	@Override
 	public List<BookDTO> getBooksInStock() {	
-		List<Book> books = inventoryRepository.findAll();
+		List<Book> books = bookRepository.findAll();
 		return BookConverter.convertBookListToBookDTOList(books);
 	}
 	
@@ -47,7 +47,7 @@ public class InventoryServiceImpl implements InventoryService{
 		Book book = BookConverter.convertBookDTOToBook(bookDTO);
 		book.setCreatedBy("default");
 		book.setModifiedBy("default");
-		Book bookSaved = inventoryRepository.save(book);
+		Book bookSaved = bookRepository.save(book);
 		return BookConverter.convertBooktoBookDTO(bookSaved);
 	}
 	

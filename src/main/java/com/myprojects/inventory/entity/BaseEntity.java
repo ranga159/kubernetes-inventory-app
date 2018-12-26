@@ -17,7 +17,6 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-@EqualsAndHashCode
 public abstract class BaseEntity {
 
     @CreatedBy

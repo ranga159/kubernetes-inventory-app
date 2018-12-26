@@ -15,10 +15,14 @@ public class BookConverter {
 		return books.stream().map(BookConverter::convertBooktoBookDTO).collect(Collectors.toList());
 	}
 	
+	public static List<Book> convertBookDTOListToBookList(List<BookDTO> bookDTOList){
+		return bookDTOList.stream().map(BookConverter::convertBookDTOToBook).collect(Collectors.toList());
+	}
+	
 	public static BookDTO convertBooktoBookDTO(Book book) {
 		BookDTO bookDTO = new BookDTO();
 		bookDTO.setId(book.getId());
-		bookDTO.setAuthor(book.getAuthor());
+		bookDTO.setAuthor(AuthorConverter.convertAuthorToAuthorDTO(book.getAuthor()));
 		bookDTO.setIsbn(book.getIsbn());
 		bookDTO.setPublished_date(book.getPublished_date());
 		bookDTO.setTitle(book.getTitle());
@@ -28,10 +32,12 @@ public class BookConverter {
 	public static Book convertBookDTOToBook(BookDTO bookDTO) {
 		Book book = new Book();
 		book.setId(bookDTO.getId());
-		book.setAuthor(bookDTO.getAuthor());
+		book.setAuthor(AuthorConverter.convertAuthorDTOToAuthor(bookDTO.getAuthor()));
 		book.setIsbn(bookDTO.getIsbn());
 		book.setPublished_date(bookDTO.getPublished_date());
 		book.setTitle(bookDTO.getTitle());
 		return book;
 	}
+	
+	
 }
