@@ -4,6 +4,7 @@ inventory app
 #run eureka server
 https://github.com/ranga159/eureka-server
 runs on port 8761
+url to access eureka http://localhost:8761
 
 #running postgres docker for inventory app
 docker-compose -f inventory-db-compose.yml up
