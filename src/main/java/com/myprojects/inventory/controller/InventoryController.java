@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myprojects.inventory.domain.BookDTO;
+import com.myprojects.inventory.domain.OrderDTO;
 import com.myprojects.inventory.service.InventoryService;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +19,8 @@ import lombok.AllArgsConstructor;
 public class InventoryController {
 	
 	private InventoryService inventoryService;
+	
+	private OrdersClient ordersClient;
 	
 	
 	@PostMapping("/books")
@@ -38,6 +41,11 @@ public class InventoryController {
 	@GetMapping(value="/books-in-stock")
 	public List<BookDTO> getBooksInStock() {
 		return inventoryService.getBooksInStock();		
+	}
+	
+	@GetMapping(value="/feignclient/orders/")
+	public List<OrderDTO> getListOfAllOrders(){
+		return ordersClient.getListOfAllOrders();
 	}
 	
 }

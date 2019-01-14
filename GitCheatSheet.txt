@@ -4,7 +4,7 @@ git config --list
 
 #checking in new project to github
 git init
-git add -all
+git add --all
 git commit -m "orders micro service initial checkin"
 	#create orders repo in github and copy the https link
 git remote add origin https://github.com/ranga159/orders.git
