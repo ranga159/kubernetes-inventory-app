@@ -18,6 +18,7 @@ http://localhost:8080/swagger-ui.html
 /inventory-app/src/main/resources/post_book_curl.txt
 
 #----------------------
+
 #run eureka server
 https://github.com/ranga159/eureka-server
 runs on port 8761
