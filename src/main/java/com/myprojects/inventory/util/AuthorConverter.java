@@ -1,6 +1,8 @@
 package com.myprojects.inventory.util;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,7 +29,11 @@ public class AuthorConverter {
 		author.setId(authorDTO.getId());
 		author.setFirstName(authorDTO.getFirstName());
 		author.setLastName(authorDTO.getLastName());
-		List<Book> bookList = BookConverter.convertBookDTOListToBookList(authorDTO.getBooks().stream().collect(Collectors.toList()));
+		Set<BookDTO> bookSet = Optional.ofNullable(authorDTO.getBooks()).orElse(Collections.emptySet());
+
+		//authorDTO.getBooks().stream().findAny().isPresent() ? collect(Collectors.toList();
+		List<Book> bookList = BookConverter.convertBookDTOListToBookList(bookSet.stream().collect(Collectors.toList()));
+		//List<Book> bookList = BookConverter.convertBookDTOListToBookList(authorDTO.getBooks().stream().collect(Collectors.toList()));
 		author.setBooks(bookList.stream().collect(Collectors.toSet()));
 		return author;
 	}

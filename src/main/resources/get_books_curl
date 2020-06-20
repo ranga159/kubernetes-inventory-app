@@ -1,0 +1,4 @@
+curl -X GET \
+  http://localhost:8080/books \
+  -H 'Cache-Control: no-cache' \
+  -H 'Postman-Token: 6b5c2d39-b8e3-42da-ba2f-fbe3cf16f712'

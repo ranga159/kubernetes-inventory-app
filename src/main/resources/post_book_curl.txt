@@ -1,0 +1,14 @@
+curl -X POST \
+  http://localhost:8080/books \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: f97e4253-ec0e-459e-a68c-82d26e4b88d4' \
+  -d '{
+  "author": {
+    "firstName": "john",
+    "lastName": "doe"
+  },
+  "isbn": 1234,
+  "published_date": "2020-06-20T21:36:19Z",
+  "title": "my first book"
+}'

@@ -27,7 +27,7 @@ public class BookRestClientTest {
 	@Test
 	public void test() {
 		
-		List<BookDTO> bookDTOs = this.bookClient.getBooks();
+//		List<BookDTO> bookDTOs = this.bookClient.getBooks();
 		
 	}
 

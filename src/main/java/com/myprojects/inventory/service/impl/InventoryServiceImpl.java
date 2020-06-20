@@ -1,24 +1,26 @@
 package com.myprojects.inventory.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.myprojects.inventory.domain.BookDTO;
+import com.myprojects.inventory.entity.Author;
+import com.myprojects.inventory.entity.Book;
+import com.myprojects.inventory.repository.BookRepository;
+import com.myprojects.inventory.repository.AuthorRepository;
+import com.myprojects.inventory.service.InventoryService;
+import com.myprojects.inventory.util.BookConverter;
+import lombok.AllArgsConstructor;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.myprojects.inventory.domain.BookDTO;
-import com.myprojects.inventory.entity.Book;
-import com.myprojects.inventory.repository.BookRepository;
-import com.myprojects.inventory.service.InventoryService;
-import com.myprojects.inventory.util.BookConverter;
-
-import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class InventoryServiceImpl implements InventoryService{
 
 	private BookRepository bookRepository;
+
+	private AuthorRepository authorRepository;
 	
 	@Override
 	public List<BookDTO> getAllBooks() {	
@@ -45,8 +47,13 @@ public class InventoryServiceImpl implements InventoryService{
 	@Override
 	public BookDTO createBook(BookDTO bookDTO) {
 		Book book = BookConverter.convertBookDTOToBook(bookDTO);
-		book.setCreatedBy("default");
+		Author author = book.getAuthor();
+		book.setCreatedBy("default"); // remove these once column defaults are set
 		book.setModifiedBy("default");
+		author.setCreatedBy("default");
+		author.setModifiedBy("default");
+
+		authorRepository.save(book.getAuthor());
 		Book bookSaved = bookRepository.save(book);
 		return BookConverter.convertBooktoBookDTO(bookSaved);
 	}
