@@ -14,10 +14,14 @@ inventory runs on port 8080 and registers with eureka/discovery service
 http://localhost:8080/swagger-ui.html
 
 #when running inventory app just by itself, disable the service discovery and should be able to call basic end points, example curl below
-/inventory-app/src/main/resources/curl.txt
+
 /inventory-app/src/main/resources/post_book_curl.txt
 
+/inventory-app/src/main/resources/get_books_curl.txt
+
+
 #----------------------
+
 #run eureka server
 https://github.com/ranga159/eureka-server
 runs on port 8761
