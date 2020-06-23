@@ -1,0 +1,9 @@
+curl -X POST \
+  http://localhost:8080/authenticate \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: df4262cf-cd38-46f4-b5df-12adbf536c1d' \
+  -d '{
+  "username": "ranga",
+  "password": "password"
+}

@@ -19,6 +19,12 @@ http://localhost:8080/swagger-ui.html
 
 /inventory-app/src/main/resources/get_books_curl.txt
 
+#authenticate and access the secured end point
+#----------------------
+# run the authenticate end point
+/inventory-app/src/main/resources/authentication_curl.txt
+#replace the bearer token that you get from above end point in the following curl
+/inventory-app/src/main/resources/authentication_books-in-stock_curl.txt
 
 #----------------------
 

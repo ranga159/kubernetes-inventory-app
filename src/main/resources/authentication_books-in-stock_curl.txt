@@ -1,0 +1,5 @@
+curl -X GET \
+  http://localhost:8080/books-in-stock \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5nYSIsImV4cCI6MTU5MjkwMjc1NywiaWF0IjoxNTkyODg0NzU3fQ.kvgZawyslCiEpgst40y--HHbFM-FU8JxqH8Q6p4uB_JJzlTibHNHoYmctzN2eb2QMRgowU3TiDgPlK2Akz73jg' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Postman-Token: aaa1385e-328e-45e7-9dab-43b6d8cb2a52'
