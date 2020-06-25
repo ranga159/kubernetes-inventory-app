@@ -61,7 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
 
-                .authorizeRequests().antMatchers("/authenticate","/actuator/*","/books","/books/*").permitAll().
+                .authorizeRequests().antMatchers("/authenticate",
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**"
+                ,"/actuator/*","/books","/books/*").permitAll().
 
                 anyRequest().authenticated().and().
 
@@ -71,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
+/*        http.csrf().disable().authorizeRequests().anyRequest().permitAll();*/
 
 /*        http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests()
                 .anyRequest().permitAll();*/
