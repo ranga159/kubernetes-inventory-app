@@ -1,17 +1,25 @@
 #inventory micro service application
 inventory app
 
-#running postgres docker for inventory app
-docker-compose -f inventory-db-compose.yml up
+#install and run minikube
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+minikube start
+
+#createing postgres docker for inventory app
+kubectl create -f docker-persistent-volume.yml,postgres-persistent-volume-claim.yml,docker-postgres-configmap.yml
+kubectl create -f docker-postgres-deployment.yml
 
 #initialize inventory tables
-/inventory/src/main/resources/db/*.sql
+docker-postgres-configmap.yml file under resources folder has the initializing scripts. The config map is mounted as volume in 
+docker-postgres-deployment.yml file.
 
-#run inventory app
-inventory runs on port 8080 and registers with eureka/discovery service
+#get port numbers of services : service-port-defined-in-service
+kubectl get services
 
 #swagger url
-http://localhost:8080/swagger-ui.html
+http://{minikube-ip}:{service-port-defined-in-service}/swagger-ui.html
+
+# to do ... update readme below
 
 #when running inventory app just by itself, disable the service discovery and should be able to call basic end points, example curl below
 
